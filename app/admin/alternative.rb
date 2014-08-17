@@ -1,4 +1,5 @@
 ActiveAdmin.register Alternative do
+  permit_params :alternative, :correct
 
 
   # See permitted parameters documentation:
