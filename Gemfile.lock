@@ -98,6 +98,8 @@ GEM
     formtastic (2.3.0.rc4)
       actionpack (>= 3.0)
     google-analytics-rails (0.0.6)
+    haml (4.0.5)
+      tilt
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -280,6 +282,7 @@ DEPENDENCIES
   devise!
   dotenv-rails
   google-analytics-rails
+  haml
   jbuilder (~> 2.0)
   jquery-rails
   omniauth
