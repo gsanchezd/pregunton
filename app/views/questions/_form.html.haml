@@ -10,10 +10,18 @@
 
   .form-group
     = f.text_area :question, :class => 'form-control'
-  .form-group
-    = f.fields_for :alternative, @question.alternative do |c| 
-      = c.text_field :alternative 
+    
+  - 4.times.each do |i|
+    = f.fields_for :alternatives, @question.alternatives[i] ||Question.new.alternatives.build do |c| 
+      .form-group
+        .row
+          .col-md-9
+            %p= "Alternativa #{i + 1}"
+            = c.text_field :alternative, :class => 'form-control'
+          .col-md-3
+            %p Correcta
+            = c.check_box :correct
 
   .form-group
     .actions
-      = f.submit
+      = f.submit "Guardar", :class => 'btn btn-primary'
