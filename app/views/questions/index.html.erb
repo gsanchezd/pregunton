@@ -9,7 +9,11 @@
 	  	<p> <%= question.question %> </p>
 	  	<ol> 
 	  		<% question.alternatives.each do |alt| %>
-	  			<li> <%= alt.alternative %> </li>
+		  		<li> <%= alt.alternative %> 
+		  		<% if alt.correct %>
+		  			<span class="label label-success"> Correcta </span>
+		  		<% end %>
+		  		</li>
 	  		<% end %>
 	  	</ol>
 	</div>
