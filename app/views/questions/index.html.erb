@@ -1,11 +1,22 @@
 <div class="container">
-
 <% @questions.each do |question| %>
+  <div class="well">
   <div class="row">
-  <%= question.question %>
-    <%= link_to 'Show', question %>
-    <%= link_to 'Edit', edit_question_path(question) %>
-    <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+  	<div class="col-md-9">
+	  	<p> <%= question.question %> </p>
+	  	<ol> 
+	  		<% question.alternatives.each do |alt| %>
+	  			<li> <%= alt.alternative %> </li>
+	  		<% end %>
+	  	</ol>
+	</div>
+	<div class="col-md-3">
+	    <li> <%= link_to 'Show', question %> </li>
+	    <li> <%= link_to 'Edit', edit_question_path(question) %> </li>
+	     <li> <%= link_to 'Destroy', question, method: :delete, data: { 	confirm: 'Are you sure?' } %> </li>
+	   	</ul>
+   	</div>
+   	</div>
   </div>
 <% end %>
 
