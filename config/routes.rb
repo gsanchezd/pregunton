@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'games/play'
   get 'games/new'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords"}, skip: [:sessions, :registrations]
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'games#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
