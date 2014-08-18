@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  before_filter :authenticate_user!
+
   def play
 	@q_id = params[:q]
 	@alt_id = params[:alt]
