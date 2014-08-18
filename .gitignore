@@ -12,9 +12,10 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
+.DS_Store
 /log/*.log
 /tmp
-
+/config/*
 #->Prelang (env_variables:dotenv)
 # Ignore .env file so sensitive environment variables are not checked into Git.
 .env
