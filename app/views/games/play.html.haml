@@ -1,5 +1,5 @@
 .container
-	%h2="Tu puntaje #{@game.score}"
+	%h2="Tu puntaje #{@score}"
 	.well
 		%h1= @question.question
 
@@ -23,5 +23,8 @@
 			%h2{:style => 'text-align:center'}
 				.label.label-danger
 					Incorrecto 
-			%h3 
-				=link_to('Empezar de nuevo', games_new_path)
+			%h3
+				%ul 
+					%li=link_to('Empezar de nuevo', games_new_path)
+					-unless user_signed_in?
+						%li= link_to("Guardar puntaje y respuestas", new_user_session_path)
