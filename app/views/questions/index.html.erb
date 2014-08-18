@@ -1,3 +1,6 @@
+<%= link_to 'New Question', new_question_path %>
+
+
 <div class="container">
 <% @questions.each do |question| %>
   <div class="well">
@@ -21,5 +24,4 @@
 <% end %>
 
 
-<%= link_to 'New Question', new_question_path %>
 </div>
