@@ -15,9 +15,12 @@
 
 *= require_self
 */
+
+@import "bootstrap-sprockets";
 @import "bootstrap_configuration";
 
 @import "bootstrap";
+@import "bootstrap/glyphicons";
 
 //->Prelang (ui_framework:twitter_bootstrap)
 
