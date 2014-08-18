@@ -6,8 +6,9 @@
 			%p
 				= alt.alternative
 				- unless alt.alternative.empty?
-					%a{:href=> games_play_path(:q => @question.id, :alt => alt.id), :class => 'btn btn-small btn-primary'}
-						%i.glyphicon.glyphicon-check
+					- unless @alternative # 
+						%a{:href=> games_play_path(:q => @question.id, :alt => alt.id), :class => 'btn btn-small btn-primary'}
+							%i.glyphicon.glyphicon-check
 
 	- if @alternative 
 		-if @alternative.correct == true
