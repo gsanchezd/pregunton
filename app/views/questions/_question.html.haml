@@ -3,14 +3,12 @@
   .alternatives{:style => 'margin-top:20px'}
     - question.alternatives.each do |alt|
       %p
-        = alt.alternative
-        - unless alt.alternative.empty?
-          - unless @alternative # 
-            =link_to(                                   |
-            "ok",                                       |
-            answer_games_path(alternative:alt.id, format: :js),                                        |
-            :class => 'btn btn-small btn-primary',      |
-            :remote => true)
+        - unless alt.alternative.empty?        
+          =link_to(                                   |
+          alt.alternative,                           |
+          answer_games_path(alternative:alt.id, format: :js),                                       |
+          :style => 'margin-left:10px',               |
+          :remote => true)
 
             
               
