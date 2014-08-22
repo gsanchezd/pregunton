@@ -1,8 +1,19 @@
 Rails.application.routes.draw do
   get 'pages/index'
 
-  get 'games/play'
   get 'games/new'
+  get 'games/play'
+  get 'games/play2'
+  get 'games/lose'
+
+  resources :games do
+    collection do 
+      get 'play3'
+      get 'lose'
+      get 'answer'
+    end
+  end
+
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -13,7 +24,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'games#new'
+  root 'games#play3'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -7,6 +7,10 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
+  def play
+    @question = Question.paginate(:page => params[:page], :per_page => 1).first
+  end
+
   # GET /questions/1
   # GET /questions/1.json
   def show

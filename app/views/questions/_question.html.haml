@@ -1,0 +1,16 @@
+.box
+  %h3= question.question
+  .alternatives{:style => 'margin-top:20px'}
+    - question.alternatives.each do |alt|
+      %p
+        = alt.alternative
+        - unless alt.alternative.empty?
+          - unless @alternative # 
+            =link_to(                                   |
+            "ok",                                       |
+            answer_games_path(alternative:alt.id, format: :js),                                        |
+            :class => 'btn btn-small btn-primary',      |
+            :remote => true)
+
+            
+              
