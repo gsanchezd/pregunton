@@ -1,5 +1,8 @@
-.jumbotron
-	%h1 ¿Cuanto sabes de programación web?
-	%h2 Atrévete con este desafío
-	.btn.btn-primary
-		=link_to "Hola", games_play_path()
+- unless user_signed_in?
+  .box{:style => 'text-align:center; background-color:#4C7A7E; margin:0px;'}
+    %h1 ¿Cuanto sabes de HTML?
+    %h4{:style => 'font-size:150%; padding:20px'} Si quieres conservar tu puntaje debes ingresar o registrarte
+.options{:style => 'padding:10px; text-align:center; margin-top:80px'}
+  = link_to "Ingresa", new_user_session_path, :class => 'btn btn-large btn-warning col-md-4', :style => 'border-radius:0px; color:white;'
+  = link_to "Registrarte", new_user_registration_path, :class => 'btn btn-large btn-danger col-md-4', :style => 'border-radius:0px; color:white'
+  = link_to "Que empieze el juego", new_game_path, :class => 'btn btn-large btn-warning col-md-4', :style => 'border-radius:0px; color:white'
