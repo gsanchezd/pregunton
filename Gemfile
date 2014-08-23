@@ -6,6 +6,7 @@ gem 'rails', '4.1.4'
 gem 'haml'
 gem 'will_paginate', '~> 3.0'
 gem 'gon'
+gem 'loadjs'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
