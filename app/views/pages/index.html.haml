@@ -5,4 +5,5 @@
 .options{:style => 'padding:10px; text-align:center; margin-top:80px'}
   = link_to "Ingresa", new_user_session_path, :class => 'btn btn-large btn-warning col-md-4', :style => 'border-radius:0px; color:white;'
   = link_to "Registrarte", new_user_registration_path, :class => 'btn btn-large btn-danger col-md-4', :style => 'border-radius:0px; color:white'
-  = link_to "Que empieze el juego", new_game_path, :class => 'btn btn-large btn-warning col-md-4', :style => 'border-radius:0px; color:white'
+  .div{:'data-no-turbolink' => ''}
+    = link_to "Que empieze el juego", new_game_path, :class => 'btn btn-large btn-warning col-md-4', :style => 'border-radius:0px; color:white'
