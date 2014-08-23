@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   before_filter :authenticate_user!, :only => [:create]
 
   def new
-    gon.questions_count = 3
+    gon.questions_count = 10
     @questions = Question.limit(gon.questions_count)
     gon.destiny = lose_games_url
     gon.score = 0
@@ -29,9 +29,6 @@ class GamesController < ApplicationController
         format.js {render 'wrong'}
       end
     end
-  end
-
-  def lose
   end
 
   def create

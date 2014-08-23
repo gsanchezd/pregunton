@@ -14,10 +14,6 @@
           #clock
             180
       .fixbox{:style => 'padding-left:5px; text-align:center; margin-top:30px'}
-        %h4
-          Puntaje: 
-          #score
-            0
 
     .col-md-10.col-sm-10.col-xs-10
       - @questions.each do |question|
@@ -25,6 +21,13 @@
           .col-md-12
             .question{:id => "question#{question.id}"}
               = render question
+      .scorebox{:style => 'padding:50px; text-align:center'}
+        %p
+          #score 0 puntos
+          #timescore
+        %h2
+          Guardar puntaje
+
 
   / = link_to("guardar puntaje", games_path, :method => :post)
   
@@ -50,4 +53,6 @@
 /   .progress
 /     .progress-bar.progress-bar-success.progress-bar-striped.active{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "completed", :role => "progressbar", :style => "width: #{@completed}%"}
 /       %span.sr-only 45% Complete
+
+
 

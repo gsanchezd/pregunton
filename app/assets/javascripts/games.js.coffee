@@ -1,11 +1,11 @@
 load "games#new", (controller, action) ->
-  time = 180
+  time = 20 * gon.questions_count
   playing = 1
 
   setInterval (->
     step()
     $('#clock').html(time)
-
+    $('#score').html(gon.score + " puntos")
     return
   ), 1000 
 
@@ -20,6 +20,7 @@ load "games#new", (controller, action) ->
     if gon.answers_count < gon.questions_count
       return true
     else
+      $('#timescore').html(time / 4 + " puntos por tiempo")
       return false
 
 
