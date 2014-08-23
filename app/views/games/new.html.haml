@@ -1,25 +1,31 @@
 .box{:style => 'text-align:center; background-color:#4C7A7E; margin:0px;'}
   %h1 ¿Cuanto sabes de HTML?
 
-.row
-  .col-md-2
-    .fixbox{:style => 'padding-left:5px; text-align:center; margin-top:30px'}
-      %h4
-        Tiempo:
-        #clock
-          180
-    .fixbox{:style => 'padding-left:5px; text-align:center; margin-top:30px'}
-      %h4
-        Puntaje: 
-        #score
-          0
+.container{:style => 'margin-top:50px'}
+  .row
+    .col-md-2
+      .fixed-box{:style => ''}
+        .fixbox{:style => 'background-color:white;; margin-top:3px'}
+          =link_to(image_tag("en1mes.png", :class => 'img-responsive'),"http://www.en1mes.com")
+        
+        
+        .fixbox{:style => 'padding-left:5px; text-align:center; margin-top:30px'}
+          %h4
+            Tiempo:
+            #clock
+              180
+        .fixbox{:style => 'padding-left:5px; text-align:center; margin-top:30px'}
+          %h4
+            Puntaje: 
+            #score
+              0
 
-  .col-md-10
-    - @questions.each do |question|
-      .row
-        .col-md-12
-          .question{:id => "question#{question.id}"}
-            = render question
+    .col-md-10
+      - @questions.each do |question|
+        .row
+          .col-md-12
+            .question{:id => "question#{question.id}"}
+              = render question
 
   / = link_to("guardar puntaje", games_path, :method => :post)
   
