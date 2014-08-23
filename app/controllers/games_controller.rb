@@ -2,35 +2,31 @@ class GamesController < ApplicationController
   before_filter :authenticate_user!, :only => [:save]
 
   def play3
-    @questions = Question.limit(10)
+    gon.questions_count = 3
+    @questions = Question.limit(gon.questions_count)
     gon.destiny = games_lose_url
     gon.score = 0
+    gon.watch.answers_count = 0
   end
 
-  def play2
-  #This is an experiment, using pagination to 
-    @questions = Question.paginate(:page => params[:page], :per_page => 1)
-    @question = @questions.first
-    @completed = 100 * params[:page].to_i / @questions.count
-  end
 
   def play
-	@q_id = params[:q]
-	@alt_id = params[:alt]
-	#@game = current_user.games.last
-	if @q_id.nil?
-		@question = Question.offset(rand(Question.count)).first
-		session[:score] += 1
-	else
-		@question = Question.find(@q_id)
-		@alternative = Alternative.find(@alt_id) 
-	end
-	@score = session[:score]
+  	@q_id = params[:q]
+  	@alt_id = params[:alt]
+  	#@game = current_user.games.last
+  	if @q_id.nil?
+  		@question = Question.offset(rand(Question.count)).first
+  		session[:score] += 1
+  	else
+  		@question = Question.find(@q_id)
+  		@alternative = Alternative.find(@alt_id) 
+  	end
+  	@score = session[:score]
 
   end
 
   def new
-	session[:score] = 0
+ 	  session[:score] = 0
   	#game = current_user.games.build(:score => -1)
   	#game.save
   	redirect_to games_play_path

@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   get 'pages/index'
-
   get 'games/new'
   get 'games/play'
-  get 'games/play2'
   get 'games/lose'
 
   resources :games do

@@ -1,3 +1,6 @@
 select = '#question' + <%= @question.id %>;
 $(select + "> .box").addClass('wrong');
 $(select + "> .box > .alternatives").toggle("slow")
+
+gon.answers_count += 1
+

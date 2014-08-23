@@ -3,4 +3,7 @@ $(select + "> .box").addClass('correct');
 $(select + "> .box > .alternatives").toggle("slow")
 
 gon.score = gon.score + 1
+gon.answers_count += 1
+
+
 $('#score').html(gon.score)
