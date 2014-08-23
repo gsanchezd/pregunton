@@ -1,0 +1,12 @@
+.container
+	.row{:style => 'margin-top:30px'}
+		.col-md-8-col-md-offset-4
+			%table.table.table-striped.table-responsive
+				- @games.each do |g| 
+					%tr
+						%td{:padding => '20px'}= g.user.email
+						%td{:padding => '20px'}= g.score
+						%td{:padding => '20px'}= g.created_at
+			
+
+

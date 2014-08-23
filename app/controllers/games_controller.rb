@@ -1,43 +1,26 @@
 class GamesController < ApplicationController
-  before_filter :authenticate_user!, :only => [:save]
-
-  def play3
-    gon.questions_count = 3
-    @questions = Question.limit(gon.questions_count)
-    gon.destiny = games_lose_url
-    gon.score = 0
-    gon.watch.answers_count = 0
-  end
-
-
-  def play
-  	@q_id = params[:q]
-  	@alt_id = params[:alt]
-  	#@game = current_user.games.last
-  	if @q_id.nil?
-  		@question = Question.offset(rand(Question.count)).first
-  		session[:score] += 1
-  	else
-  		@question = Question.find(@q_id)
-  		@alternative = Alternative.find(@alt_id) 
-  	end
-  	@score = session[:score]
-
-  end
+  before_filter :authenticate_user!, :only => [:create]
 
   def new
- 	  session[:score] = 0
-  	#game = current_user.games.build(:score => -1)
-  	#game.save
-  	redirect_to games_play_path
+    gon.questions_count = 3
+    @questions = Question.limit(gon.questions_count)
+    gon.destiny = lose_games_url
+    gon.score = 0
+    gon.watch.answers_count = 0
+    session[:answers] = ""
+    session[:score] = 0
+
   end
+
 
   def answer
     @answer = Alternative.find(params[:alternative])
     @question = @answer.question
     gon.q_id = @question.id
+    session[:answers] << @answer.id
 
     if @answer.correct?
+      session[:score] += 1
       respond_to do |format|
         format.js {render 'correct'}
       end
@@ -51,7 +34,12 @@ class GamesController < ApplicationController
   def lose
   end
 
-  def save
+  def create
+    Game.create(user_id:current_user.id, :score => session[:score])
+    redirect_to top_games_path
   end
   
+  def top
+    @games = Game.all
+  end
 end

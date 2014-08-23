@@ -1,14 +1,11 @@
 Rails.application.routes.draw do
   get 'pages/index'
-  get 'games/new'
-  get 'games/play'
-  get 'games/lose'
 
   resources :games do
     collection do 
-      get 'play3'
       get 'lose'
       get 'answer'
+      get 'top'
     end
   end
 
@@ -22,7 +19,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'games#play3'
+  root 'games#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
