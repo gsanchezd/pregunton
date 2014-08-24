@@ -1,26 +1,39 @@
 load "games#new", (controller, action) ->
-  time = 20 * gon.questions_count
+  max_time = 15 * gon.questions_count
+  time = max_time
   playing = 1
+  saved = 0
 
   setInterval (->
-    step()
-    $('#clock').html(time)
-    $('#score').html(gon.score + " puntos")
+    if playing == 1 
+      time -= 1
+      update_scores()
+      update_timer()
+      check_game_completed()
+    else
+      update_time_score()
+      if saved == 0
+        
+        saved = 1
+
     return
   ), 1000 
 
-  step = ->
-    if time <= 0 and playing == 1 # Lose by time 
-      playing = 0
-      alert('perdiste')
-    else if time > 0 and answers_completed()
-      time -= 1
 
-  answers_completed = ->
-    if gon.answers_count < gon.questions_count
-      return true
-    else
-      $('#timescore').html(time / 4 + " puntos por tiempo")
-      return false
+  check_game_completed = ->
+    if gon.answers_count >= gon.questions_count
+      playing = 0
+    if time <= 0
+      playing = 0
+
+  update_scores = ->
+    $('#score').html(gon.score + " puntos")
+
+  update_timer = ->
+    $('#clock').html(time)
+
+  update_time_score = ->
+    $('#timescore').html(time / 5 + " puntos por tiempo")
+
 
 
