@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140824031526) do
+ActiveRecord::Schema.define(version: 20140824032527) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -24,9 +27,9 @@ ActiveRecord::Schema.define(version: 20140824031526) do
     t.datetime "updated_at"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -43,8 +46,8 @@ ActiveRecord::Schema.define(version: 20140824031526) do
     t.datetime "updated_at"
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "alternatives", force: true do |t|
     t.text     "alternative"
@@ -54,7 +57,7 @@ ActiveRecord::Schema.define(version: 20140824031526) do
     t.datetime "updated_at"
   end
 
-  add_index "alternatives", ["question_id"], name: "index_alternatives_on_question_id"
+  add_index "alternatives", ["question_id"], name: "index_alternatives_on_question_id", using: :btree
 
   create_table "answers", force: true do |t|
     t.integer  "user_id"
@@ -64,8 +67,8 @@ ActiveRecord::Schema.define(version: 20140824031526) do
     t.integer  "game_id"
   end
 
-  add_index "answers", ["alternative_id"], name: "index_answers_on_alternative_id"
-  add_index "answers", ["user_id"], name: "index_answers_on_user_id"
+  add_index "answers", ["alternative_id"], name: "index_answers_on_alternative_id", using: :btree
+  add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
 
   create_table "games", force: true do |t|
     t.integer  "user_id"
@@ -74,7 +77,7 @@ ActiveRecord::Schema.define(version: 20140824031526) do
     t.datetime "updated_at"
   end
 
-  add_index "games", ["user_id"], name: "index_games_on_user_id"
+  add_index "games", ["user_id"], name: "index_games_on_user_id", using: :btree
 
   create_table "questions", force: true do |t|
     t.text     "question"
@@ -84,12 +87,12 @@ ActiveRecord::Schema.define(version: 20140824031526) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                            default: "", null: false
+    t.string   "encrypted_password",               default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                    default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -97,12 +100,11 @@ ActiveRecord::Schema.define(version: 20140824031526) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "provider"
-    t.integer  "uid"
+    t.integer  "uid",                    limit: 8
     t.string   "name"
-    t.boolean  "guest"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
