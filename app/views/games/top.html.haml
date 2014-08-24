@@ -5,7 +5,8 @@
 
 .container
   .row{:style => 'margin-top:30px'}
-    .col-md-8.col-md-offset-4
+    .col-md-6{:style => 'border:white solid; border-width: 0 1px 0 0'}
+      %h3 Top 20 puntajes de la semana
       %table.table.table-striped.table-responsive
         - @games.each do |g| 
           .row
@@ -14,6 +15,10 @@
               = pluralize(g.score, "punto") + " | "
               = time_ago_in_words(g.created_at)
 
-
-      .div{:'data-no-turbolink' => ''}
-        = link_to "Vamos por la revancha", new_game_path, :class => 'btn btn-large btn-warning col-md-4', :style => 'border-radius:0px; color:white'
+    .col-md-6{:style => 'text-align:right'}
+      %h3 Desafía a un amigo 
+      <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="icon" data-width="100" style="background-color:white; padding:5px 10px 10px 10px "></div>
+  
+  .row
+    .div{:'data-no-turbolink' => '', :style => 'margin-top:50px'}
+      = link_to "Vamos por la revancha", new_game_path, :class => 'btn btn-large btn-warning col-md-4 col-md-offset-4', :style => 'border-radius:0px; color:white'

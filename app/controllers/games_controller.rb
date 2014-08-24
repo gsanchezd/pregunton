@@ -22,17 +22,22 @@ class GamesController < ApplicationController
     @answer = Alternative.find(params[:alternative])
     @question = @answer.question
     gon.q_id = @question.id
-    session[:answers] << @answer.id
-    if @answer.correct?
-      session[:score] += 3
-      respond_to do |format|
-        format.js {render 'correct'}
+    # Check if the questions was already answered
+    unless session[:answers].to_a.include? @answer.id
+      session[:answers] << @answer.id
+      if @answer.correct?
+        session[:score] += 3
+        respond_to do |format|
+          format.js {render 'correct'}
+        end
+      else
+        respond_to do |format|
+          session[:score] -= 3
+          format.js {render 'wrong'}
+        end
       end
     else
-      respond_to do |format|
-        session[:score] -= 3
-        format.js {render 'wrong'}
-      end
+      render :nothing => true
     end
   end
 
