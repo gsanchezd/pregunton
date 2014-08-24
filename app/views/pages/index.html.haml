@@ -7,3 +7,6 @@
   = link_to "Registrarte", new_user_registration_path, :class => 'btn btn-large btn-danger col-md-4', :style => 'border-radius:0px; color:white'
   .div{:'data-no-turbolink' => ''}
     = link_to "Que empieze el juego", new_game_path, :class => 'btn btn-large btn-warning col-md-4', :style => 'border-radius:0px; color:white'
+
+  -if user_signed_in?
+    = link_to "Salir", destroy_user_session_path, :class => 'btn btn-large btn-success col-md-4 col-md-offset-4', :style => 'border-radius:0px; color:white', :method => 'delete'
