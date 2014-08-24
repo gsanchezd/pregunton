@@ -67,6 +67,6 @@ class GamesController < ApplicationController
   end
 
   def top
-    @games = Game.all
+    @games = Game.order('score desc')
   end
 end
