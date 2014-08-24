@@ -34,7 +34,8 @@ class GamesController < ApplicationController
 
   def create
     if current_user.nil?
-      user = User.create(:name => "guest", :email => "guest_#{Time.now.to_i}#{rand(100)}@example.com")
+      random_name = "guest_#{Time.now.to_i}#{rand(100)}"
+      user = User.create(:name => random_name, :email => random_name + "_@example.com")
       user.save!(:validate => false)
     else 
       user = current_user

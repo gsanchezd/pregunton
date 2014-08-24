@@ -1,14 +1,14 @@
 .box
 	%h1 Los mejores puntajes de hoy
 
-	.container
-		.row{:style => 'margin-top:30px'}
-			.col-md-8-col-md-offset-4
-				%table.table.table-striped.table-responsive
-					- @games.each do |g| 
-						.row
-							= g.user.name
-							= pluralize(g.score, "punto")
-							= time_ago_in_words(g.created_at)
+.container
+	.row{:style => 'margin-top:30px'}
+		.col-md-8-col-md-offset-4
+			%table.table.table-striped.table-responsive
+				- @games.each do |g| 
+					.row
+						= g.user.name
+						= pluralize(g.score, "punto")
+						= time_ago_in_words(g.created_at)
 
 
