@@ -11,9 +11,9 @@ load "games#new", (controller, action) ->
       update_timer()
       check_game_completed()
     else
-      update_time_score()
       if saved == 0
-        
+        save_time_left()
+        update_time_score()
         saved = 1
 
     return
@@ -33,7 +33,10 @@ load "games#new", (controller, action) ->
     $('#clock').html(time)
 
   update_time_score = ->
-    $('#timescore').html(time / 5 + " puntos por tiempo")
+    $('#timescore').html(time / 5 + " puntos por tiempo ")
+
+  save_time_left = ->
+    $.get(gon.save_time_left_path, {time_left: time})
 
 
 

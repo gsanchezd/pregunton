@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'lose'
       get 'answer'
       get 'top'
+      get 'save_time_left'
     end
   end
 
