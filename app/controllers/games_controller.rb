@@ -14,6 +14,7 @@ class GamesController < ApplicationController
 
     session[:answers] = []
     session[:score] = 0
+    session[:time_score] = 0
   end
 
 
