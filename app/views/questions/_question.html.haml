@@ -1,7 +1,8 @@
 .box
   %h3= question.question
   .alternatives{:style => 'margin-top:20px'}
-    - question.alternatives.each do |alt|
+    - altenatives = question.alternatives.shuffle
+    - altenatives.each do |alt|
       %p
         - unless alt.alternative.empty?        
           =link_to(                                   |
