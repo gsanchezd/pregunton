@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
 
   devise :omniauthable, omniauth_providers: [:facebook]
   has_many :games, :dependent => :destroy
-  
+  validates :name, presence: true
+    
   #->Prelang (user_login/devise)
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
