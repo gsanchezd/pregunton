@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   #before_filter :authenticate_user!, :only => [:create]
 
   def new
-    gon.questions_count = 10
+    gon.questions_count = 20
     @questions = Question.limit(gon.questions_count)
     gon.questions_count = @questions.count  #Fixing the value in the case that is less
     gon.destiny_path = lose_games_url
