@@ -7,13 +7,23 @@
   .row{:style => 'margin-top:30px'}
     .col-md-6{:style => 'border:white solid; border-width: 0 1px 0 0'}
       %h3 Top 20 puntajes de la semana
+
       %table.table.table-striped.table-responsive
-        - @games.each do |g| 
+        - @games.each_with_index do |g, i| 
           .row
             %h5
-              = g.user.name + " | "
-              = pluralize(g.score, "punto") + " | "
+              = g.user.name + ": "
+              = pluralize(g.score, "punto")
+              -if i == 0
+                %i.glyphicon.glyphicon-certificate{:style => 'color:gold'}
+              -if i == 1
+                %i.glyphicon.glyphicon-certificate{:style => 'color:silver'}
+              -if i == 2
+                %i.glyphicon.glyphicon-certificate{:style => 'color:rgb(193, 123, 81)'}
+
+              = " | "
               = time_ago_in_words(g.created_at)
+  
 
     .col-md-6{:style => 'text-align:right'}
       %h3 Desafía a un amigo 
