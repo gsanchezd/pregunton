@@ -42,6 +42,7 @@ class GamesController < ApplicationController
   end
 
   def create
+    @questionnaire = Questionnaire.friendly.find(params[:questionnaire_id])
     if current_user.nil?
       random_name = "guest_#{Time.now.to_i}#{rand(100)}"
       user = User.create(:name => random_name, :email => random_name + "_@example.com")
@@ -56,7 +57,7 @@ class GamesController < ApplicationController
       ans = Answer.create(:alternative => Alternative.find(alt), :game => game, :user => user)
     end
 
-    redirect_to top_games_path
+    redirect_to top_questionnaire_games_path(@questionnaire)
   end
   
   def save_time_left
@@ -72,6 +73,7 @@ class GamesController < ApplicationController
   end
 
   def top
+    @questionnaire = Questionnaire.friendly.find(params[:questionnaire_id])
     @games = Game.order('score desc')
   end
 end
