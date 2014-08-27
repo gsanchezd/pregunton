@@ -1,5 +1,5 @@
 ActiveAdmin.register Question do
-  permit_params :question, :question_image
+  permit_params :question, :question_image, :questionnaire
 
 
   # See permitted parameters documentation:

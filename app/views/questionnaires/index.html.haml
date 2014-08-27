@@ -4,7 +4,7 @@
 
 
 .container.div{:'data-no-turbolink' => '', :style => 'padding-top:100px'}
-	- @questionnaires.each do |q|
+	- @questionnaires.sort.each do |q|
 		.col-md-4
 			.box
-				%h2= link_to q.name, new_questionnaire_game_path(q), :style => 'color:white'
+				%h3= link_to q.name, new_questionnaire_game_path(q), :style => 'color:white'
