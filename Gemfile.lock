@@ -98,6 +98,8 @@ GEM
       multipart-post (>= 1.2, < 3)
     formtastic (2.3.0)
       actionpack (>= 3.0)
+    friendly_id (5.0.4)
+      activerecord (>= 4.0.0)
     gon (5.1.2)
       actionpack (>= 2.3.0)
       json
@@ -250,6 +252,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise!
   dotenv-rails
+  friendly_id (~> 5.0.0)
   gon
   google-analytics-rails
   haml

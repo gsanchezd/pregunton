@@ -60,6 +60,7 @@ gem 'binding_of_caller'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'validates_formatting_of'
 gem 'tzinfo-data'
+gem 'friendly_id', '~> 5.0.0'
 
 group :development do
   gem 'better_errors'
