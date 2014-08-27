@@ -1,10 +1,44 @@
-.box{:style => 'text-align:center'}
-	.container
-		%h1 ¿Cuánto sabes de?
+.box{:style => 'text-align:center; background-color:#4C7A7E; margin:0px;'}
+  %h1 ¿Cuanto sabes de?
+  - unless user_signed_in?
+    %h4{:style => 'font-size:150%; padding:20px'} Si quieres conservar tu puntaje debes ingresar o registrarte
+
+    .row
+      = link_to "Ingresa", new_user_session_path, :class => 'btn btn-large btn-warning col-md-offset-2 col-md-4 col-sm-4 col-sm-offset-2 col-xs-4 col-xs-offset-2', :style => 'border-radius:0px; color:white;'
+      
+      = link_to "Regístrate", new_user_registration_path, :class => 'btn btn-large btn-danger col-md-4 col-sm-4 col-xs-4', :style => 'border-radius:0px; color:white'
+  / .div{:'data-no-turbolink' => ''}
+  /   = link_to "Que empiece el juego", new_questionnaire_game_path(Questionnaire.first), :class => 'btn btn-large btn-danger col-md-6 col-sm-6 col-xs-6', :style => 'border-radius:0px; color:white'
+
+  -if user_signed_in?
+    .row{:style => 'padding-top:20px'}
+      = link_to "Salir", destroy_user_session_path, :class => 'btn btn-large btn-warning col-md-6 col-md-offset-3 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4', :style => 'border-radius:0px; color:white', :method => 'delete'
+    
+
+.container.div{:'data-no-turbolink' => '', :style => 'padding-top:50px'}
+  .row
+    - @questionnaires.sort.each do |q|
+      .col-md-4{:style => 'padding-top:10px'}
+        .box.category
+          .borders
+            %a{:href => new_questionnaire_game_path(q), :style => 'color:white'}
+              %h3= q.name
+      
+    
 
 
-.container.div{:'data-no-turbolink' => '', :style => 'padding-top:100px'}
-	- @questionnaires.sort.each do |q|
-		.col-md-4
-			.box
-				%h3= link_to q.name, new_questionnaire_game_path(q), :style => 'color:white'
+.box{:style => 'margin-top:100px'}
+  .container
+    %h2 Reglas del juego
+    %p El juego consiste de varias preguntas de alternativa, cada respuesta correcta te da 3 puntos, cada respuesta incorrecta te quita 3 puntos, si terminas de contestar antes del tiempo recibes puntos extras.
+
+    %hr{:style => 'border-color:#555'}
+
+    %h2 Te gustaría cooperar con las preguntas
+    %p Envíame un email a gonzalo@en1mes.com con tus ideas.
+
+
+
+
+
+

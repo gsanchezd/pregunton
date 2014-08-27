@@ -2,14 +2,18 @@
   %h1 ¿Cuanto sabes de HTML?
   - unless user_signed_in?
     %h4{:style => 'font-size:150%; padding:20px'} Si quieres conservar tu puntaje debes ingresar o registrarte
-.options{:style => 'padding:30px; text-align:center; margin-top:20px'}
-  = link_to "Ingresa", new_user_session_path, :class => 'btn btn-large btn-warning col-md-6 col-sm-6 col-xs-6', :style => 'border-radius:0px; color:white;'
-  = link_to "Registrarte", new_user_registration_path, :class => 'btn btn-large btn-danger col-md-6 col-sm-6 col-xs-6', :style => 'border-radius:0px; color:white'
-  .div{:'data-no-turbolink' => ''}
-    = link_to "Que empiece el juego", new_questionnaire_game_path(Questionnaire.first), :class => 'btn btn-large btn-danger col-md-6 col-sm-6 col-xs-6', :style => 'border-radius:0px; color:white'
+
+    .row
+      = link_to "Ingresa", new_user_session_path, :class => 'btn btn-large btn-warning col-md-offset-2 col-md-4 col-sm-4 col-sm-offset-2 col-xs-4 col-xs-offset-2', :style => 'border-radius:0px; color:white;'
+      
+      = link_to "Regístrate", new_user_registration_path, :class => 'btn btn-large btn-danger col-md-4 col-sm-4 col-xs-4', :style => 'border-radius:0px; color:white'
+  / .div{:'data-no-turbolink' => ''}
+  /   = link_to "Que empiece el juego", new_questionnaire_game_path(Questionnaire.first), :class => 'btn btn-large btn-danger col-md-6 col-sm-6 col-xs-6', :style => 'border-radius:0px; color:white'
 
   -if user_signed_in?
-    = link_to "Salir", destroy_user_session_path, :class => 'btn btn-large btn-warning col-md-6 col-sm-6 col-xs-6', :style => 'border-radius:0px; color:white', :method => 'delete'
+    .row{:style => 'padding-top:20px'}
+      = link_to "Salir", destroy_user_session_path, :class => 'btn btn-large btn-warning col-md-6 col-md-offset-3 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4', :style => 'border-radius:0px; color:white', :method => 'delete'
+    
 
 .box{:style => 'margin-top:100px'}
   .container
