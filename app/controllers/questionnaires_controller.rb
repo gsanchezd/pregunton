@@ -1,5 +1,6 @@
 class QuestionnairesController < ApplicationController
 	before_action :set_questionaire, :only => [:show]
+
 	def index
 		@questionnaires = Questionnaire.all
 	end
