@@ -1,5 +1,5 @@
 ActiveAdmin.register Question do
-  permit_params :question, :question_image, :questionnaire
+  permit_params :question, :question_image, :questionnaire_id
 
   index do
     column :id
