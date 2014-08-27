@@ -1,3 +1,9 @@
-.container.div{:'data-no-turbolink' => ''}
-	- @questionnaires.each do |q|
-		= link_to q.name, new_questionnaire_game_path(q)
+.box{:style => 'text-align:center'}
+	.container
+		%h1 ¿Cuánto sabes de?
+
+
+.container.div{:'data-no-turbolink' => '', :style => 'padding-top:30px'}
+	.col-md-4
+		- @questionnaires.each do |q|
+			%h2= link_to q.name, new_questionnaire_game_path(q), :style => 'color:white'
