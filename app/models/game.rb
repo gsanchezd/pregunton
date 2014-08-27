@@ -1,5 +1,6 @@
 class Game < ActiveRecord::Base
 	belongs_to :user
+	belongs_to :questionnaire
 	has_many :answers, :dependent => :destroy
 	
 	def increment_score
