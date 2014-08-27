@@ -1,0 +1,13 @@
+.box
+	.container{:style => 'text-align:center'}
+		%h1 Crea un cuestionario nuevo
+
+
+.container{:style => 'padding-top:20px'}
+	= form_for(@questionnaire) do |f|
+		.form-group
+			= f.label :name
+			= f.text_field :name, :class => 'form-control'
+		.form-group
+			= f.submit "Crear", :class => 'btn btn-primary'
+
