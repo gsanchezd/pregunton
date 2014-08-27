@@ -6,7 +6,7 @@
   = link_to "Ingresa", new_user_session_path, :class => 'btn btn-large btn-warning col-md-6 col-sm-6 col-xs-6', :style => 'border-radius:0px; color:white;'
   = link_to "Registrarte", new_user_registration_path, :class => 'btn btn-large btn-danger col-md-6 col-sm-6 col-xs-6', :style => 'border-radius:0px; color:white'
   .div{:'data-no-turbolink' => ''}
-    = link_to "Que empiece el juego", new_game_path, :class => 'btn btn-large btn-danger col-md-6 col-sm-6 col-xs-6', :style => 'border-radius:0px; color:white'
+    = link_to "Que empiece el juego", new_questionnaire_game_path(Questionnaire.first), :class => 'btn btn-large btn-danger col-md-6 col-sm-6 col-xs-6', :style => 'border-radius:0px; color:white'
 
   -if user_signed_in?
     = link_to "Salir", destroy_user_session_path, :class => 'btn btn-large btn-warning col-md-6 col-sm-6 col-xs-6', :style => 'border-radius:0px; color:white', :method => 'delete'

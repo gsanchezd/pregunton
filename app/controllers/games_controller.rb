@@ -2,8 +2,8 @@ class GamesController < ApplicationController
   #before_filter :authenticate_user!, :only => [:create]
 
   def new
-    gon.questions_count = 20
-    @questions = Question.limit(gon.questions_count).shuffle
+    @questionnaire = Questionnaire.friendly.find(params[:questionnaire_id])
+    @questions = @questionnaire.questions.shuffle
     gon.questions_count = @questions.count  #Fixing the value in the case that is less
     gon.destiny_path = lose_questionnaire_games_url
     gon.save_time_left_path = save_time_left_questionnaire_games_url
