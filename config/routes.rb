@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
   get 'pages/index'
 
-  resources :games do
-    collection do 
-      get 'lose'
-      get 'answer'
-      get 'top'
-      get 'save_time_left'
+
+  resources :questionnaires do
+    resources :games do
+      collection do 
+        get 'lose'
+        get 'answer'
+        get 'top'
+        get 'save_time_left'
+      end
     end
   end
 
-
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords", omniauth_callbacks: "users/omniauth_callbacks"}, skip: [:sessions, :registrations]  

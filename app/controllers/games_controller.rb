@@ -5,8 +5,8 @@ class GamesController < ApplicationController
     gon.questions_count = 20
     @questions = Question.limit(gon.questions_count).shuffle
     gon.questions_count = @questions.count  #Fixing the value in the case that is less
-    gon.destiny_path = lose_games_url
-    gon.save_time_left_path = save_time_left_games_url
+    gon.destiny_path = lose_questionnaire_games_url
+    gon.save_time_left_path = save_time_left_questionnaire_games_url
 
     gon.score = 0
     gon.time_score = 0

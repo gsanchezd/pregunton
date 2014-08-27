@@ -1,0 +1,3 @@
+.container
+	- @questionnaires.each do |q|
+		= link_to q.name, new_questionnaire_game_path(q)
